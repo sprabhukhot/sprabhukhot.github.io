@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Senior Network Engineer specializing in SD-WAN, SASE, Zscaler, and multi-cloud networking across EMEA.">
+<title>Sitaram Prabhukhot — Network & Cloud Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1d3461;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --cream-dim: #e8e0d0;
+    --text: #f0ece4;
+    --text-muted: #8a9bb5;
+    --border: rgba(201,168,76,0.2);
+    --border-light: rgba(201,168,76,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 20%, rgba(29,52,97,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(201,168,76,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+  }
+  .hero-left { max-width: 560px; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 2rem;
+    font-family: 'DM Mono', monospace;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .hero-summary {
+    font-size: 1rem;
+    color: rgba(240,236,228,0.75);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.8rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    border: 1px solid var(--border);
+    color: var(--gold);
+    padding: 0.8rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* hero right — stat cards */
+  .hero-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+    align-self: center;
+  }
+  .stat-card {
+    background: var(--navy-mid);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    display: block;
+  }
+  .contact-strip {
+    background: var(--navy-mid);
+    grid-column: span 2;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--gold); }
+  .contact-item .icon { color: var(--gold); font-size: 0.7rem; }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 1rem;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300;
+    color: var(--cream);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { padding: 7rem 4rem; }
+  .experience-grid { max-width: 900px; margin: 0 auto; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+    position: relative;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border-light);
+  }
+  .exp-meta { padding-top: 0.2rem; }
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .exp-location {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .exp-company {
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.88rem;
+    color: rgba(240,236,228,0.72);
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.35rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { padding: 7rem 4rem; background: rgba(17,34,64,0.4); }
+  .skills-outer { max-width: 900px; margin: 0 auto; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+  }
+  .skill-category {
+    background: var(--navy-mid);
+    padding: 2rem;
+  }
+  .skill-cat-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid var(--border);
+    color: rgba(240,236,228,0.75);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .skill-tag:hover { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { padding: 7rem 4rem; }
+  .cert-outer { max-width: 900px; margin: 0 auto; }
+  .cert-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .cert-group {
+    border: 1px solid var(--border-light);
+    padding: 2rem;
+  }
+  .cert-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-list { list-style: none; }
+  .cert-list li {
+    font-size: 0.85rem;
+    color: rgba(240,236,228,0.75);
+    padding: 0.45rem 0 0.45rem 1.2rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .cert-list li:last-child { border-bottom: none; }
+  .cert-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.5rem;
+    top: 0.65rem;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { padding: 7rem 4rem; background: rgba(17,34,64,0.4); }
+  .projects-outer { max-width: 900px; margin: 0 auto; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+  }
+  .project-card {
+    background: var(--navy-mid);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .project-card:hover { background: rgba(29,52,97,0.9); }
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.82rem;
+    color: rgba(240,236,228,0.65);
+    line-height: 1.65;
+  }
+
+  /* ── EDUCATION ── */
+  #education { padding: 7rem 4rem; }
+  .edu-outer { max-width: 900px; margin: 0 auto; }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+  }
+  .edu-card {
+    background: var(--navy-mid);
+    padding: 2.5rem 2rem;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 0.82rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+  .edu-note { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border-light);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+    .hero-right { grid-template-columns: 1fr 1fr; }
+    #experience, #skills, #certifications, #projects, #education { padding: 5rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .cert-columns { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-right { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SP</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- HERO / ABOUT -->
+<section id="about">
+  <div id="hero">
+    <div class="hero-left fade-up">
+      <div class="hero-tag">Network &amp; Cloud Infrastructure</div>
+      <h1 class="hero-name">Sitaram<br/><span>Prabhukhot</span></h1>
+      <p class="hero-title">EMEA Lead Network Engineer</p>
+      <p class="hero-summary">
+        Results-driven Network &amp; Cloud professional with 10+ years of progressive experience designing, implementing, and managing complex enterprise and service-provider networks across Europe, the Middle East, India, and APAC. Deep expertise spanning multi-cloud networking, SD-WAN, data center fabrics, and next-generation security. Holder of 15+ industry certifications.
+      </p>
+      <div class="hero-cta">
+        <a href="resume.pdf" class="btn-primary" download>Download Resume</a>
+        <a href="mailto:sprabhukhot91@gmail.com" class="btn-primary">Get In Touch</a>
+        <a href="https://linkedin.com/in/sprabhukhot" target="_blank" class="btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-right fade-up" style="transition-delay:0.15s">
+      <div class="stat-card">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Certifications</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Cloud Platforms</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Global Regions</span>
+      </div>
+      <div class="contact-strip">
+        <a href="tel:+420770172389" class="contact-item">
+          <span class="icon">▸</span> +420 770 172 389
+        </a>
+        <a href="mailto:sprabhukhot91@gmail.com" class="contact-item">
+          <span class="icon">▸</span> sprabhukhot91@gmail.com
+        </a>
+        <a href="#" class="contact-item">
+          <span class="icon">▸</span> Czech Republic
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="experience-grid">
+    <div class="section-header fade-up">
+      <span class="section-tag">Career History</span>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <span class="exp-period">Jul 2024 — Present</span>
+        <span class="exp-location">Prague, Czech Republic</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">EMEA Lead Network Engineer</div>
+        <div class="exp-company">Kenvue</div>
+        <ul class="exp-bullets">
+          <li>Technical manager for on-prem and on-cloud network infrastructure across the EMEA region</li>
+          <li>Juniper Mist design and deployment; MPLS &amp; DIA migration via SD-WAN &amp; Zscaler</li>
+          <li>Manufacturing site firewall replacement with Palo Alto NGFW</li>
+          <li>Cloud networking deployment &amp; operations across AWS &amp; Azure</li>
+          <li>Backbone deployment and new office infrastructure setup</li>
+          <li>Hardware and software procurement for EMEA region</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <span class="exp-period">Nov 2020 — Jun 2024</span>
+        <span class="exp-location">Prague, Czech Republic</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Senior Lead – Network Services</div>
+        <div class="exp-company">Kyndryl Client Delivery Center</div>
+        <ul class="exp-bullets">
+          <li>Network Architect and SME for European hosted data centers across concurrent enterprise engagements</li>
+          <li>Authored HLD/LLD documents and topology diagrams for onboardings, refreshes, and cloud migrations</li>
+          <li>Engineered centralized transit hub using Palo Alto NGFW and Cisco Catalyst for east-west segmentation</li>
+          <li>Designed hybrid cloud connectivity: DC/HQ/branch to AWS via VPC, Transit Gateway, Direct Connect</li>
+          <li>Architected Azure hub-spoke topology with Fortinet SD-WAN, Azure Firewall, vWAN, and ExpressRoute</li>
+          <li>Led VMware NSX-V to NSX-T migration with zero unplanned production downtime</li>
+          <li>Managed Cisco ACI fabric sustaining 99.9%+ availability SLA for all hosted customers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <span class="exp-period">Oct 2019 — Sep 2020</span>
+        <span class="exp-location">UAE / Oman</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Network Consultant</div>
+        <div class="exp-company">Prime Solutions &amp; Services FZE LLC</div>
+        <ul class="exp-bullets">
+          <li>Led end-to-end greenfield branch network design and deployment for Oman enterprise client</li>
+          <li>Architected Cisco Meraki cloud-managed network (MX-250 SD-WAN, MS switches, MR APs)</li>
+          <li>Deployed CUCM VoIP telephony with ISR gateways, SIP trunks, and Unity voicemail for 100+ users</li>
+          <li>Provisioned Azure AD, VNets, Intune MDM, and Microsoft Teams; integrated CCTV and biometric systems</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <span class="exp-period">Aug 2017 — Aug 2019</span>
+        <span class="exp-location">Pune, India</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Senior Network Engineer</div>
+        <div class="exp-company">Cybage Software Pvt. Ltd.</div>
+        <ul class="exp-bullets">
+          <li>Managed enterprise network across 10+ branches and 2 data centers in Americas, Europe, and APAC</li>
+          <li>Administered clustered Palo Alto and Cisco ASA firewalls; executed migration and upgrade projects</li>
+          <li>Deployed and operated F5 LTM/GTM load balancers and Cisco Nexus 2K/5K DC switching</li>
+          <li>Owned escalation resolution, reducing MTTR through structured RCA and proactive monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <span class="exp-period">Jul 2015 — Jul 2017</span>
+        <span class="exp-location">Mumbai, India</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Engineer – Network Operations</div>
+        <div class="exp-company">Virtela / NTT Communications</div>
+        <ul class="exp-bullets">
+          <li>Managed global MPLS backbone and customer-edge networks ensuring SLA compliance worldwide</li>
+          <li>Resolved complex incidents spanning BGP, OSPF, EIGRP, MPLS, IPSec, DMVPN, HSRP, VPLS</li>
+          <li>Managed NFV cloud services (WAN Optimization, SSL VPN, UTM) on Cisco, Juniper, Alcatel-Lucent</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <span class="exp-period">Jun 2014 — Jun 2015</span>
+        <span class="exp-location">Mumbai, India</span>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Enterprise NOC Engineer</div>
+        <div class="exp-company">Ericsson (Reliance Communications)</div>
+        <ul class="exp-bullets">
+          <li>Monitored and managed ISP and MPLS WAN with proactive/reactive fault management for L3 VPN customers</li>
+          <li>Troubleshot OSPF, BGP, MPLS routing and Layer-1 transport faults on Cisco, Juniper, and Huawei platforms</li>
+          <li>Performed SDH fault isolation on Fibcom, Nortel, and Marconi transmission equipment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-outer">
+    <div class="section-header fade-up">
+      <span class="section-tag">Technical Expertise</span>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid fade-up">
+      <div class="skill-category">
+        <div class="skill-cat-title">Routing &amp; Switching</div>
+        <div class="skill-tags">
+          <span class="skill-tag">BGP</span><span class="skill-tag">OSPF</span><span class="skill-tag">EIGRP</span>
+          <span class="skill-tag">MPLS</span><span class="skill-tag">DMVPN</span><span class="skill-tag">VPLS</span>
+          <span class="skill-tag">VRF</span><span class="skill-tag">HSRP</span><span class="skill-tag">STP/RSTP</span>
+          <span class="skill-tag">802.1Q</span><span class="skill-tag">QoS</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Firewalls &amp; Security</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Palo Alto NGFW</span><span class="skill-tag">Checkpoint</span>
+          <span class="skill-tag">Fortigate</span><span class="skill-tag">Cisco ASA</span>
+          <span class="skill-tag">Cisco ISE</span><span class="skill-tag">IDS/IPS</span>
+          <span class="skill-tag">SASE</span><span class="skill-tag">Zscaler</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Cloud Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Microsoft Azure</span><span class="skill-tag">AWS</span>
+          <span class="skill-tag">Oracle Cloud</span><span class="skill-tag">IBM Cloud</span>
+          <span class="skill-tag">Alibaba Cloud</span><span class="skill-tag">Aviatrix</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Data Center</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Cisco ACI</span><span class="skill-tag">VMware NSX-T</span>
+          <span class="skill-tag">VMware NSX-V</span><span class="skill-tag">Nexus 2K/5K</span>
+          <span class="skill-tag">F5 LTM/GTM/APM</span><span class="skill-tag">Fabricpath</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">SD-WAN</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Cisco SD-WAN</span><span class="skill-tag">Cisco Meraki</span>
+          <span class="skill-tag">Silver Peak</span><span class="skill-tag">Fortinet SD-WAN</span>
+          <span class="skill-tag">Juniper Mist</span><span class="skill-tag">Traffic Shaping</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Automation &amp; Voice</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">Terraform</span>
+          <span class="skill-tag">NetFlow</span><span class="skill-tag">SNMP</span>
+          <span class="skill-tag">CUCM</span><span class="skill-tag">SIP/H.323</span>
+          <span class="skill-tag">Cisco Unity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="cert-outer">
+    <div class="section-header fade-up">
+      <span class="section-tag">Credentials</span>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="cert-columns fade-up">
+      <div class="cert-group">
+        <div class="cert-group-title">Networking</div>
+        <ul class="cert-list">
+          <li>CCNP Enterprise — Cisco</li>
+          <li>PCNSE — Palo Alto Networks</li>
+          <li>JNCIA — Juniper Networks</li>
+          <li>Fortinet NSE</li>
+          <li>Cisco Meraki</li>
+          <li>Silver Peak SD-WAN / SPOP</li>
+          <li>Aviatrix MCN Associate</li>
+          <li>Zscaler Digital</li>
+        </ul>
+      </div>
+      <div class="cert-group">
+        <div class="cert-group-title">Cloud</div>
+        <ul class="cert-list">
+          <li>MS Azure Administrator</li>
+          <li>MS Azure Security Engineer</li>
+          <li>MS Azure Network Engineer</li>
+          <li>AWS Solutions Architect</li>
+          <li>Oracle Cloud Foundations</li>
+          <li>Oracle Cloud Architect</li>
+          <li>IBM Cloud Advisor</li>
+          <li>Alibaba Cloud Compute</li>
+          <li>Alibaba Cloud Security</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-outer">
+    <div class="section-header fade-up">
+      <span class="section-tag">Selected Work</span>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Project Highlights</h2>
+    </div>
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <span class="project-number">01</span>
+        <div class="project-title">Cisco SD-WAN &amp; Zscaler SIG Integration</div>
+        <p class="project-desc">WAN optimization and full migration integrating Cisco SD-WAN with Zscaler Secure Internet Gateway for unified cloud-delivered security.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">02</span>
+        <div class="project-title">EMEA HQ — Juniper Mist Deployment</div>
+        <p class="project-desc">Full-stack Juniper Mist AI-driven wireless and wired deployment for EMEA headquarters, including backbone setup and lifecycle management.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">03</span>
+        <div class="project-title">Transit Network Hub — Palo Alto NGFW</div>
+        <p class="project-desc">Designed and deployed centralized Palo Alto NGFW transit hub with Cisco Catalyst edge for segmented east-west security inspection across European DCs.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">04</span>
+        <div class="project-title">AWS Hybrid Connectivity — Kyndryl</div>
+        <p class="project-desc">Architected DC-to-AWS connectivity using VPC, Transit Gateway, and Direct Connect/VPN for multiple European enterprise customers.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">05</span>
+        <div class="project-title">Azure SD-WAN Integration</div>
+        <p class="project-desc">Delivered Azure hub-spoke topology with Fortinet SD-WAN, ExpressRoute, and Azure Firewall for optimized branch-to-cloud connectivity.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">06</span>
+        <div class="project-title">NSX-V to NSX-T Migration</div>
+        <p class="project-desc">Led complete overlay and underlay network migration for hosted DC customers — zero unplanned downtime across all production environments.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">07</span>
+        <div class="project-title">Greenfield Branch — Oman</div>
+        <p class="project-desc">Full-stack branch delivery covering SD-WAN, VoIP for 100+ users, wireless, CCTV integration, RADIUS AAA, DNS, and Azure/Intune.</p>
+      </div>
+      <div class="project-card">
+        <span class="project-number">08</span>
+        <div class="project-title">F5 Multi-Tier Load Balancing</div>
+        <p class="project-desc">Designed multi-environment F5 LTM/APM solution supporting production, staging, and DR for SaaS customer application workloads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="edu-outer">
+    <div class="section-header fade-up">
+      <span class="section-tag">Academic Background</span>
+      <div class="section-divider"></div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid fade-up">
+      <div class="edu-card">
+        <div class="edu-degree">B.E. – Electronics &amp; Telecommunications</div>
+        <div class="edu-school">University — India</div>
+        <div class="edu-note">Foundation in electronics, signal processing, and telecommunications systems</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Data Communication</div>
+        <div class="edu-school">MTNL CETTM</div>
+        <div class="edu-note">Specialist training in data communication technologies and network protocols</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Sitaram Prabhukhot</div>
+  <div class="footer-links">
+    <a href="mailto:sprabhukhot91@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/sprabhukhot" target="_blank">LinkedIn</a>
+    <a href="tel:+420770172389">Phone</a>
+  </div>
+  <div class="footer-copy">Network &amp; Cloud Infrastructure · Czech Republic</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
